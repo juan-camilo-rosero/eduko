@@ -9,7 +9,7 @@ function Book() {
   return (
     <div className={`fixed h-screen bg-blue-darker w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center pt-32 px-6 gap-16 overflow-y-scroll pb-12 transition-all md:px-16 lg:px-24 lg:pt-28 ${(book)
         ? "bottom-0"
-        : "-bottom-full"
+        : "-bottom-full mt-40"
     }`}>
         <RiCloseCircleLine className="fixed right-6 -mt-12 text-blue-turquoise text-4xl bg-blue-darker rounded-full cursor-pointer md:right-14 lg:right-20 lg:-mt-0 lg:text-5xl" onClick={() => setBook(false)}/>
         <h2 className="text-center text-light text-3xl font-semibold md:text-4xl">{title}</h2>
