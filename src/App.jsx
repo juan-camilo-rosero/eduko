@@ -5,17 +5,19 @@ import HeroSection from './components/HeroSection'
 import {SectionContext} from './context/SectionContext'
 import Panel from './components/Panel'
 import { BooksContextProvider } from './context/BooksContext'
+import { ScoreContextProvider } from './context/ScoreContext'
 
 function App() {
   const {heroSection} = useContext(SectionContext)
   return (
     <>
-      <Header/>
-      {(heroSection)
-        ? <HeroSection/>
-        : <BooksContextProvider> <Panel/> </BooksContextProvider>
-      }
-      
+      <ScoreContextProvider>
+        <Header/>
+        {(heroSection)
+          ? <HeroSection/>
+          : <BooksContextProvider>  <Panel/> </BooksContextProvider>
+        }
+      </ScoreContextProvider>  
     </>
   )
 }
