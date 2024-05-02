@@ -142,3 +142,10 @@ export const booksData = [
         read: true
     },
 ]
+
+export const user = {
+    username: "William1596",
+    points: 2000,
+    streak: 15,
+    streakDate: "2024-04-28"
+}
