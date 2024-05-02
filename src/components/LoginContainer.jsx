@@ -7,8 +7,8 @@ function LoginContainer() {
   const [password, setPassword] = useState("")
 
   const validateLogin = (email, password) => {
-    const minPasswordLength = 8
-    const maxPasswordLength = 16
+    const minPasswordLength = 6
+    const maxPasswordLength = 20
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const isEmailValid = emailRegex.test(email)
     const isPasswordValid = password.length >= minPasswordLength && password.length <= maxPasswordLength

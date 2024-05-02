@@ -4,9 +4,8 @@ import { SectionContext } from '../context/SectionContext'
 import { BooksContext } from '../context/BooksContext'
 
 function Books() {
-  const [books, setBooks] = useState([{title: "hola uwu"}])
   const {setBook} = useContext(SectionContext)
-  const {setTitle, setContent} = useContext(BooksContext)
+  const {setTitle, setContent, setActualBook, books, setBooks} = useContext(BooksContext)
 
   const bookStyles = "w-[45%] h-48 rounded-xl flex flex-col gap-2 justify-center items-center md:w-[26%] md:h-52 transition-all lg:w-1/5 shadow-xl"
 
@@ -16,10 +15,10 @@ function Books() {
 
   const handleBookClick = (book, index) => {
     setBook(true)
+    setActualBook(index)
     setTitle(book.title)
     setContent(book.content)
   }
-
 
   return (
     <main className='min-h-screen -mt-16 pt-16 lg:w-2/3 w-full pb-32 lg:pb-8'>
