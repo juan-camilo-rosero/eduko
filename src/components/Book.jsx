@@ -28,8 +28,8 @@ function Book() {
         ? "bottom-0"
         : "-bottom-[150vh]"
     }`}>
-        <RiCloseCircleLine className="fixed right-6 -mt-12 text-blue-turquoise text-4xl bg-blue-darker rounded-full cursor-pointer md:right-14 lg:right-20 lg:-mt-0 lg:text-5xl" onClick={() => setBook(false)}/>
-        <h2 className="text-center text-light text-3xl font-semibold md:text-4xl">{title}</h2>
+        <RiCloseCircleLine className="fixed right-6 -mt-0 text-blue-turquoise text-4xl bg-blue-darker rounded-full cursor-pointer md:right-14 lg:right-20 lg:-mt-0 lg:text-5xl" onClick={() => setBook(false)}/>
+        <h2 className="text-center w-4/5 md:w-full text-light text-3xl font-semibold md:text-4xl">{title}</h2>
         <p className="text-justify text-medium text-xl md:leading-8 lg:w-2/3">{content}</p>
         <button className="w-full py-2 bg-blue-turquoise transition-all hover:bg-blue-turquoiseHover text-blue-darker text-2xl rounded-xl font-semibold md:w-1/3 lg:w-1/4" onClick={() => handleCompleted()}>done</button>
     </div>
