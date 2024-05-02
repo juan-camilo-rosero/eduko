@@ -20,7 +20,7 @@ function LoginContainer() {
   }
 
   return (
-    <figure className="bg-blue-dark rounded-xl p-6 pb-12 flex flex-col items-center mt-32 md:mt-40 md:w-1/2 lg:w-5/6 lg:mt-28 lg:pb-8">
+    <figure className="bg-blue-dark rounded-xl p-6 pb-12 flex flex-col items-center mt-32 w-full md:mt-40 md:w-1/2 lg:w-5/6 lg:mt-28 lg:pb-8">
         <img src="robot.png" alt="robot" className="h-40 -mt-32"/>
         <h3 className="text-3xl font-semibold text-light">Start now</h3>
         <form className="flex flex-col w-4/5 mt-12 gap-6 lg:mt-4 lg:gap-4" onSubmit={e => {
