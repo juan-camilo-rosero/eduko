@@ -18,7 +18,7 @@ function UserCard() {
       </button>
         <div>
             <img src={hat.url} alt="your hat :<" className="absolute w-14 -top-3/4 ml-16 rotate-45 lg:relative lg:top-14"/>
-            <div className="h-28 w-28 -mt-14 bg-light bg-[url('profile_photo.webp')] bg-cover rounded-full border-blue-dark border-8 lg:mt-8 lg:border-blue-turquoise lg:border-4 lg:mb-4"/>
+            <div className='h-28 w-28 -mt-14 bg-light bg-[url("user.jpg")] bg-cover rounded-full border-blue-dark border-8 lg:mt-8 lg:border-blue-turquoise lg:border-4 lg:mb-4'/>
             <div/>
             <p className="text-center text-sm text-light font-semibold mb-6 lg:text-xl">William1423</p>
         </div>
