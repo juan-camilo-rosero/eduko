@@ -144,8 +144,60 @@ export const booksData = [
 ]
 
 export const user = {
-    username: "William1596",
+  username: "William1596",
+  points: 600,
+  streak: 15,
+  streakDate: "2024-04-28",
+  hat: 0
+};
+
+export const hatsData = [
+  {
+    url: "hat1.png",
+    points: 100,
+  },
+  {
+    url: "hat2.png",
+    points: 200,
+  },
+  {
+    url: "hat3.png",
+    points: 250,
+  },
+  {
+    url: "hat4.webp",
+    points: 400,
+  },
+  {
+    url: "hat5.webp",
+    points: 500,
+  },
+  {
+    url: "hat6.webp",
+    points: 500,
+  },
+  {
+    url: "hat7.webp",
+    points: 600,
+  },
+  {
+    url: "hat8.webp",
+    points: 700,
+  },
+  {
+    url: "hat9.png",
+    points: 900,
+  },
+  {
+    url: "hat10.png",
+    points: 1200,
+  },
+  {
+    url: "hat11.webp",
+    points: 1500,
+  },
+  {
+    url: "hat12.webp",
     points: 2000,
-    streak: 15,
-    streakDate: "2024-04-28"
-}
+  },
+];
