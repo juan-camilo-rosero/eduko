@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState} from "react"
-import {user} from '../data'
+import {user, hatsData} from '../data'
 
 export const ScoreContext = createContext()
 
@@ -7,6 +7,7 @@ export function ScoreContextProvider(props) {
     const [points, setPoints] = useState(0)
     const [streak, setStreak] = useState(0)
     const [streakDate, setStreakDate] = useState(0)
+    const [hat, setHat] = useState({})
 
     const isNextDate = (date1, date2) => {
         const dateObj1 = new Date(date1);
@@ -28,6 +29,7 @@ export function ScoreContextProvider(props) {
         (isNextDate(user.streakDate, formatDate(new Date())))
         ? setStreak(user.streak)
         : setStreak(0);
+        setHat(hatsData[user.hat])
     }, [])
 
     return (
@@ -38,7 +40,9 @@ export function ScoreContextProvider(props) {
             setStreak,
             streakDate,
             setStreakDate,
-            formatDate
+            formatDate,
+            hat,
+            setHat
         }}>
             {props.children}
         </ScoreContext.Provider>

@@ -3,15 +3,18 @@ import { createContext, useEffect, useState} from "react"
 export const SectionContext = createContext()
 
 export function SectionContextProvider(props) {
-    const [heroSection, setHeroSection] = useState(true)
+    const [heroSection, setHeroSection] = useState(false)
     const [book, setBook] = useState(false)
+    const [shop, setShop] = useState(false)
 
     return (
         <SectionContext.Provider value={{
             heroSection,
             setHeroSection,
             book,
-            setBook
+            setBook,
+            shop,
+            setShop
         }}>
             {props.children}
         </SectionContext.Provider>
