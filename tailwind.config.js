@@ -16,6 +16,7 @@ export default {
           darkerHover: "#090C1D"
         },
         light: "#B6BBC4",
+        lightHover: "#898484",
         medium: "#747475",
         dark: "#7D7D7D"
       }
