@@ -1,26 +1,34 @@
-import { act, useContext } from "react";
+import { useContext } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { SectionContext } from "../context/SectionContext";
 import { BooksContext } from "../context/BooksContext";
 import { ScoreContext } from "../context/ScoreContext";
+import { AlertContext } from "../context/AlertContext";
 
 function Book() {
-  const {book, setBook} = useContext(SectionContext)
+  const {book, setBook, setAlertDiv} = useContext(SectionContext)
   const {title, content, actualBook, books, setBooks} = useContext(BooksContext)
   const {points, setPoints, streak, streakDate, setStreak, setStreakDate, formatDate} = useContext(ScoreContext)
+  const {setMessage, setImg} = useContext(AlertContext)
 
   const handleCompleted = () => {
     const booksArr = books;
-    (booksArr[actualBook].read)
-    ? setPoints(points + 25)
-    : setPoints(points + 50);
-    booksArr[actualBook].read = true
-    setBooks(booksArr)
-    setBook(false)
-    if (streakDate !== formatDate(new Date())){
+    const newPoints = (booksArr[actualBook].read) ? 25 : 50
+    setPoints(points + newPoints)
+    if(streakDate !== formatDate(new Date())){
+      setMessage(`You extended your streak and won ${newPoints} points!!!`)
+      setImg(`fire.png`)
       setStreak(streak + 1)
       setStreakDate(formatDate(new Date()))
     }
+    else{
+      setMessage(`You won ${newPoints} points!!!`)
+      setImg(`treasure.png`)
+    }
+    setAlertDiv(true)
+    booksArr[actualBook].read = true
+    setBooks(booksArr)
+    setBook(false)
   }
     
   return (

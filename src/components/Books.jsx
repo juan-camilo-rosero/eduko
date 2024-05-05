@@ -4,7 +4,7 @@ import { SectionContext } from '../context/SectionContext'
 import { BooksContext } from '../context/BooksContext'
 
 function Books() {
-  const {setBook} = useContext(SectionContext)
+  const {setBook, setCreateBook} = useContext(SectionContext)
   const {setTitle, setContent, setActualBook, books, setBooks} = useContext(BooksContext)
 
   const bookStyles = "w-[45%] h-48 rounded-xl flex flex-col gap-2 justify-center items-center md:w-[26%] md:h-52 transition-all lg:w-1/5 shadow-xl"
@@ -25,7 +25,7 @@ function Books() {
       <h2 className='text-2xl text-light font-semibold mt-6 lg:text-3xl lg:mt-8'>Your books</h2>
       <div className='w-full bg-light h-[3px] rounded-full mb-8 mt-4'/>
       <div className='flex flex-wrap h-full justify-between gap-y-8 lg: gap-x-4'>
-        <figure className = {`${bookStyles} border-blue-turquoise border-4 border-dashed hover:bg-blue-darkHover  cursor-pointer`}>
+        <figure className = {`${bookStyles} border-blue-turquoise border-4 border-dashed hover:bg-blue-darkHover  cursor-pointer`} onClick={() => setCreateBook(true)}>
           <p className='text-5xl text-blue-turquoise font-bold '>+</p>
         </figure>
         {books.map((book, index) => {
