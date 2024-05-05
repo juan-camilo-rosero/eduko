@@ -5,14 +5,14 @@ import Shop from "./Shop";
 import { ScoreContext } from "../context/ScoreContext";
 
 function UserCard() {
-  const {shop, setShop} = useContext(SectionContext)
+  const {shop, setShop, account, setAccount} = useContext(SectionContext)
   const {hat} = useContext(ScoreContext)
 
   return (
     <figure className={`fixed ${(shop) ? "bottom-1/2 lg:bottom-0" : "bottom-0"} w-screen left-0 h-24 bg-blue-dark flex justify-center gap-8 px-6 md:gap-32 lg:w-1/4 lg:px-0 lg:right-24 lg:left-auto lg:h-full lg:items-center lg:bg-transparent z-10 lg:justify-end transition-all`}>
       <div className="w-screen left-0 h-20 bg-blue-dark flex justify-center px-6 lg:w-80 lg:flex-col lg:pt-4 lg:py-8 lg:h-[60vh] lg:rounded-2xl lg:items-center lg:shadow-xl">
         <div className="w-full flex justify-center gap-8 md:gap-32 lg:flex-col items-center lg:gap-0 lg:h-80">
-      <button className="flex flex-col items-center justify-center text-l text-light font-semibold w-24 lg:hidden">
+      <button className="flex flex-col items-center justify-center text-l text-light font-semibold w-24 lg:hidden" onClick={() => setAccount(!account)}>
         <RiAccountCircleFill className="text-2xl lg:hidden"/>
         <p>account</p>
       </button>
@@ -26,7 +26,7 @@ function UserCard() {
         <RiShoppingCart2Fill className="text-2xl lg:hidden"/>
         <p>shop</p>
       </button>
-      <button className="hidden lg:flex w-full py-[6px] rounded-md bg-blue-darker text-light items-center justify-center text-xl font-semibold mt-4 hover:bg-blue-darkerHover transition-all">account</button>
+      <button className="hidden lg:flex w-full py-[6px] rounded-md bg-blue-darker text-light items-center justify-center text-xl font-semibold mt-4 hover:bg-blue-darkerHover transition-all" onClick={() => setAccount(!account)}>account</button>
         </div>
       </div>
       <Shop/>
