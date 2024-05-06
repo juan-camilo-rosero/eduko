@@ -17,12 +17,10 @@ export function AuthContextProvider({ children }) {
 
     const register = async (email, password) => {
         const res = await createUserWithEmailAndPassword(auth, email, password)
-        console.log(res);
     }
 
     const login = async (email, password) => {
         const res = await signInWithEmailAndPassword(auth, email, password)
-        console.log(res);
     }
 
     const loginWithGoogle = async () => {
@@ -32,7 +30,6 @@ export function AuthContextProvider({ children }) {
 
     const logout = async () => {
         const res = await signOut(auth)
-        console.log(res);
     }
     
     return <AuthContext.Provider 

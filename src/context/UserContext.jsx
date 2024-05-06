@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState} from "react"
 import { BooksContext } from "./BooksContext"
 import {hatsData} from '../data'
-import { doc, getDoc, setDoc, collection, addDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, addDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase.config";
 
 export const UserContext = createContext()
@@ -14,7 +14,7 @@ export function UserContextProvider(props) {
     const [streakDate, setStreakDate] = useState("2024-01-01")
     const [hat, setHat] = useState(0)
     const [img, setImg] = useState("profile.webp")
-    const {setBooks} = useContext(BooksContext)
+    const {setBooks, setBooksId} = useContext(BooksContext)
 
     const loadBooks = async id => {
         const docRef = doc(db, "books", id) // db - collection - document
@@ -42,8 +42,9 @@ export function UserContextProvider(props) {
             setStreakDate(user.streakDate)
             setUsername(user.username)
             setImg(user.img)
-
+            setBooksId(user.books)
             loadBooks(user.books)
+            return user.books
         } else {
             console.log("No such document!");
         }
@@ -70,6 +71,14 @@ export function UserContextProvider(props) {
         setUsername(username)
         setStreakDate(yesterdayDate)
         setImg(img)
+    }
+
+    const updateScore = async (newPoints, newStreak, newStreakDate) => {
+        await updateDoc(doc(db, "users", userEmail), {
+            streak: newStreak,
+            points: newPoints,
+            streakDate: newStreakDate
+        })
     }
 
     const isNextDate = (date1, date2) => {
@@ -113,7 +122,8 @@ export function UserContextProvider(props) {
             loadUser,
             img,
             setImg,
-            createUser
+            createUser,
+            updateScore
         }}>
             {props.children}
         </UserContext.Provider>
