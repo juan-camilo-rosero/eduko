@@ -2,26 +2,38 @@ import { useContext, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header'
 import HeroSection from './components/HeroSection'
+import Alert from './components/Alert'
 import {SectionContext} from './context/SectionContext'
 import Panel from './components/Panel'
+import SignUpContainer from './components/SignUpContainer'
 import { BooksContextProvider } from './context/BooksContext'
-import { ScoreContextProvider } from './context/ScoreContext'
 import { AlertContextProvider } from './context/AlertContext'
-
+import { AuthContextProvider } from './context/AuthContext'
+import { UserContextProvider } from './context/UserContext'
+import { ShopContextProvider } from './context/ShopContext'
 function App() {
   const {heroSection} = useContext(SectionContext)
   return (
     <>
-      <ScoreContextProvider>
       <AlertContextProvider>
+      <AuthContextProvider>
+      <BooksContextProvider>
+      <UserContextProvider>
+      <ShopContextProvider>
 
         <Header/>
+        <Alert/>
         {(heroSection)
           ? <HeroSection/>
-          : <BooksContextProvider>  <Panel/> </BooksContextProvider>
+          :  <Panel/>
         }
+        <SignUpContainer/>
+
+      </ShopContextProvider>
+      </UserContextProvider>
+      </BooksContextProvider>
+      </AuthContextProvider>
       </AlertContextProvider>
-      </ScoreContextProvider>  
     </>
   )
 }
