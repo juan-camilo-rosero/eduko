@@ -24,7 +24,7 @@ function Books() {
     <main className='min-h-screen -mt-16 pt-16 lg:w-2/3 w-full pb-32 lg:pb-8'>
       <h2 className='text-2xl text-light font-semibold mt-6 lg:text-3xl lg:mt-8'>Your books</h2>
       <div className='w-full bg-light h-[3px] rounded-full mb-8 mt-4'/>
-      <div className='flex flex-wrap h-full justify-between gap-y-8 lg: gap-x-12 md:justify-start'>
+      <div className='flex flex-wrap h-full justify-between gap-y-8 lg: lg:gap-x-10 lg:justify-start'>
         <figure className = {`${bookStyles} border-blue-turquoise border-4 border-dashed hover:bg-blue-darkHover  cursor-pointer`} onClick={() => setCreateBook(true)}>
           <p className='text-5xl text-blue-turquoise font-bold '>+</p>
         </figure>

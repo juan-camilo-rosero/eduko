@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { SectionContext } from "../context/SectionContext";
+import { AuthContext } from "../context/AuthContext";
 function Account() {
   const {account, setAccount} = useContext(SectionContext)
+  const {logout} = useContext(AuthContext)
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await logout()
     location.reload()
   }
     

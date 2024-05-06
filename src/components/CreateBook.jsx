@@ -5,17 +5,17 @@ import { BooksContext } from "../context/BooksContext";
 
 function Book() {
   const {setBook, createBook, setCreateBook} = useContext(SectionContext)
-  const {books, setBooks, setTitle, setContent} = useContext(BooksContext)
+  const {books, setBooks, setTitle, setContent, updateBooks} = useContext(BooksContext)
   const [interests, setInterests] = useState("")
   const [genre, setGenre] = useState("")
 
   const handleCreate = async e => {
-    const prompt = `Hi, create a ${genre} story about ${interests}. Answer ONLY with the content, without title or anything else`
+    const prompt = `Hi, create a ${genre} story about ${interests}. Answer ONLY with the content, without title or anything else. The story must have between 10 and 12 paragraphs `
     const options = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": 'Bearer ' + "uwu"
+            "Authorization": 'Bearer sk-proj-P73Wm6eVEodLVRZwH3F7T3BlbkFJaUpjadP2YcJwnKcxfYGt'
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
@@ -24,25 +24,40 @@ function Book() {
             ]
         })
     }
-    //const res = await fetch("https://api.openai.com/v1/chat/completions", options)
-    //const story = await res.json()
-    const story = "I'm a " + genre + " story about " + interests
-    const title = "Back to the future"
+    const res = await fetch("https://api.openai.com/v1/chat/completions", options)
+    const data = await res.json()
+
+    const story = data.choices[0].message.content
+
+    options.body = JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+            {"role": "user", "content": `Answer ONLY with a title of less than 8 words for the next story: ${story}`}
+        ]
+    })
+
+    const titleRes = await fetch("https://api.openai.com/v1/chat/completions", options)
+    const titleData = await titleRes.json()
+
+    const title = titleData.choices[0].message.content.replace(/['"]/g, '')
 
     const lastId = (books.length !== 0)
     ? books[books.length - 1].id
     : 0;
 
-    setBooks([{
+    const newBooks = [{
         id: lastId + 1,
         title,
         content: story,
         read: false
-    }, ...books])
+    }, ...books]
+
+    setBooks(newBooks)
     setCreateBook(false)
     setTitle(title)
     setContent(story)
     setBook(true)
+    await updateBooks(newBooks)
   }
 
   useEffect(() => {

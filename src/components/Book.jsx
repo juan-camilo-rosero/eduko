@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { SectionContext } from "../context/SectionContext";
 import { BooksContext } from "../context/BooksContext";
@@ -6,29 +6,35 @@ import { UserContext } from "../context/UserContext";
 import { AlertContext } from "../context/AlertContext";
 
 function Book() {
-  const {book, setBook, setAlertDiv} = useContext(SectionContext)
-  const {title, content, actualBook, books, setBooks} = useContext(BooksContext)
-  const {points, setPoints, streak, streakDate, setStreak, setStreakDate, formatDate} = useContext(UserContext)
-  const {setMessage, setImg} = useContext(AlertContext)
+  const {book, setBook, setQuestion} = useContext(SectionContext)
+  const {title, content, setStatement} = useContext(BooksContext)
+  const [loading, setLoading] = useState(false)
 
-  const handleCompleted = () => {
-    const booksArr = books;
-    const newPoints = (booksArr[actualBook].read) ? 25 : 50
-    setPoints(points + newPoints)
-    if(streakDate !== formatDate(new Date())){
-      setMessage(`You extended your streak and won ${newPoints} points!!!`)
-      setImg(`fire.png`)
-      setStreak(streak + 1)
-      setStreakDate(formatDate(new Date()))
+  const handleCompleted = async () => {
+    setLoading(true)
+    const prompt = `Hi, create a question about the following story. Answer ONLY with the question: ${content}`
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": 'Bearer sk-proj-P73Wm6eVEodLVRZwH3F7T3BlbkFJaUpjadP2YcJwnKcxfYGt'
+        },
+        body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [
+                {"role": "user", "content": prompt}
+            ]
+        })
     }
-    else{
-      setMessage(`You won ${newPoints} points!!!`)
-      setImg(`treasure.png`)
-    }
-    setAlertDiv(true)
-    booksArr[actualBook].read = true
-    setBooks(booksArr)
+    const res = await fetch("https://api.openai.com/v1/chat/completions", options)
+    const data = await res.json()
+
+    const question = data.choices[0].message.content
+
+    setStatement(question)
     setBook(false)
+    setQuestion(true)
+    setLoading(false)
   }
     
   return (
@@ -39,7 +45,7 @@ function Book() {
         <RiCloseCircleLine className="fixed right-6 -mt-0 text-blue-turquoise text-4xl bg-blue-darker rounded-full cursor-pointer md:right-14 lg:right-20 lg:-mt-0 lg:text-5xl" onClick={() => setBook(false)}/>
         <h2 className="text-center w-4/5 md:w-full text-light text-3xl font-semibold md:text-4xl">{title}</h2>
         <p className="text-justify text-medium text-xl md:leading-8 lg:w-2/3">{content}</p>
-        <button className="w-full py-2 bg-blue-turquoise transition-all hover:bg-blue-turquoiseHover text-blue-darker text-2xl rounded-xl font-semibold md:w-1/3 lg:w-1/4" onClick={() => handleCompleted()}>done</button>
+        <button className="w-full py-2 bg-blue-turquoise transition-all hover:bg-blue-turquoiseHover text-blue-darker text-2xl rounded-xl font-semibold md:w-1/3 lg:w-1/4 disabled:opacity-50" onClick={() => handleCompleted()} disabled = {loading}>{(loading) ? "loading..." : "done"}</button>
     </div>
   )
 }
