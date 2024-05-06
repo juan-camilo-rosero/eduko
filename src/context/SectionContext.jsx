@@ -9,6 +9,7 @@ export function SectionContextProvider(props) {
     const [createBook, setCreateBook] = useState(false)
     const [alertDiv, setAlertDiv] = useState(false)
     const [account, setAccount] = useState(false)
+    const [signUp, setSignUp] = useState(false)
 
     return (
         <SectionContext.Provider value={{
@@ -23,7 +24,9 @@ export function SectionContextProvider(props) {
             alertDiv,
             setAlertDiv,
             account,
-            setAccount
+            setAccount,
+            signUp,
+            setSignUp
         }}>
             {props.children}
         </SectionContext.Provider>
