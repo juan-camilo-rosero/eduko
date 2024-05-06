@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { SectionContext } from '../context/SectionContext'
-import { ScoreContext } from '../context/ScoreContext'
-import {hatsData} from '../data'
+import { UserContext } from '../context/UserContext'
+import { ShopContext } from '../context/ShopContext'
+import { hatsData } from '../data'
 
 function Shop() {
     const {shop, setShop} = useContext(SectionContext)
-    const {points, setPoints, setHat} = useContext(ScoreContext)
-    const [hats, setHats] = useState([])
+    const {points, setHat} = useContext(UserContext)
+    const {hats, setHats, loadHats} = useContext(ShopContext)
 
     useEffect(() => {
-        setHats(hatsData)
+        loadHats()
     }, [])
 
     return (
@@ -20,7 +21,7 @@ function Shop() {
                     {hats.map((hat, index) => 
                         <figure key={index} className={`flex justify-center items-center bg-light rounded-xl w-20 h-20 cursor-pointer hover:bg-lightHover transition-all md:w-28 md:h-28 lg:w-16 lg:h-16 relative`} onClick={() => {
                             if(points >= hat.points) {
-                                setHat(hatsData[index])
+                                setHat(hats[index])
                                 setShop(false)
                             }
                         }}>

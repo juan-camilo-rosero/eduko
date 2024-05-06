@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { SectionContext } from "../context/SectionContext";
 import { BooksContext } from "../context/BooksContext";
-import { ScoreContext } from "../context/ScoreContext";
+import { UserContext } from "../context/UserContext";
 import { AlertContext } from "../context/AlertContext";
 
 function Book() {
   const {book, setBook, setAlertDiv} = useContext(SectionContext)
   const {title, content, actualBook, books, setBooks} = useContext(BooksContext)
-  const {points, setPoints, streak, streakDate, setStreak, setStreakDate, formatDate} = useContext(ScoreContext)
+  const {points, setPoints, streak, streakDate, setStreak, setStreakDate, formatDate} = useContext(UserContext)
   const {setMessage, setImg} = useContext(AlertContext)
 
   const handleCompleted = () => {

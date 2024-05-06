@@ -29,7 +29,10 @@ function Book() {
     const story = "I'm a " + genre + " story about " + interests
     const title = "Back to the future"
 
-    const lastId = books[books.length - 1].id
+    const lastId = (books.length !== 0)
+    ? books[books.length - 1].id
+    : 0;
+
     setBooks([{
         id: lastId + 1,
         title,
