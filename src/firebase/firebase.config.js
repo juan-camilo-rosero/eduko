@@ -2,9 +2,11 @@ import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+const firebaseApiKey = import.meta.env.VITE_FIREBASE_API_KEY
+
 const firebaseConfig = {
 
-  apiKey: "AIzaSyBQw6XpbpS3dIZor-zLpP0Ci93ViFHDCxw",
+  apiKey: firebaseApiKey,
 
   authDomain: "eduku-2187c.firebaseapp.com",
 
