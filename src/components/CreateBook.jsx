@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { SectionContext } from "../context/SectionContext";
 import { BooksContext } from "../context/BooksContext";
+const chatGPTApiKey = import.meta.env.VITE_OPENAI_API_KEY
 
 function Book() {
   const {setBook, createBook, setCreateBook} = useContext(SectionContext)
@@ -15,7 +16,7 @@ function Book() {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": 'Bearer sk-proj-P73Wm6eVEodLVRZwH3F7T3BlbkFJaUpjadP2YcJwnKcxfYGt'
+            "Authorization": 'Bearer ' + chatGPTApiKey
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",

@@ -4,6 +4,7 @@ import { SectionContext } from "../context/SectionContext";
 import { BooksContext } from "../context/BooksContext";
 import { UserContext } from "../context/UserContext";
 import { AlertContext } from "../context/AlertContext";
+const chatGPTApiKey = import.meta.env.VITE_OPENAI_API_KEY
 
 function Question() {
   const {question, setQuestion, setAlertDiv} = useContext(SectionContext)
@@ -20,7 +21,7 @@ function Question() {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": 'Bearer sk-proj-P73Wm6eVEodLVRZwH3F7T3BlbkFJaUpjadP2YcJwnKcxfYGt'
+            "Authorization": 'Bearer ' + chatGPTApiKey
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
