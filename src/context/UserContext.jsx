@@ -80,6 +80,13 @@ export function UserContextProvider(props) {
             streakDate: newStreakDate
         })
     }
+    
+    const updateProfile = async (username, img) => {
+        await updateDoc(doc(db, "users", userEmail), {
+            username,
+            img
+        })
+    }
 
     const isNextDate = (date1, date2) => {
         const dateObj1 = new Date(date1);
@@ -123,7 +130,8 @@ export function UserContextProvider(props) {
             img,
             setImg,
             createUser,
-            updateScore
+            updateScore,
+            updateProfile
         }}>
             {props.children}
         </UserContext.Provider>
