@@ -69,6 +69,7 @@ function Question() {
         setQuestion(false)
     }
     setLoading(false)
+    setAnswer("")
   }
     
   return (
@@ -80,7 +81,7 @@ function Question() {
         <h2 className="text-center w-4/5 text-light text-3xl font-semibold md:text-4xl">{statement}</h2>
         <textarea type="text" placeholder="your answer..." className="w-full p-4 bg-transparent border-2 border-blue-turquoise text-light outline-none text-xl md:w-4/5 lg:w-1/2 lg:px-6 resize-none" rows={5} onChange={e => {
             setAnswer(e.target.value)
-        }}/>
+        }} value={answer}/>
         <button className="w-full py-2 bg-blue-turquoise transition-all hover:bg-blue-turquoiseHover text-blue-darker text-2xl rounded-xl font-semibold md:w-1/3 lg:w-1/4 disabled:opacity-50" onClick={() => handleCompleted()}disabled = {loading}>{(loading) ? "loading..." : "send"}</button>
     </div>
   )

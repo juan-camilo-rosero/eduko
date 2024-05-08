@@ -9,8 +9,10 @@ function Book() {
   const {books, setBooks, setTitle, setContent, updateBooks} = useContext(BooksContext)
   const [interests, setInterests] = useState("")
   const [genre, setGenre] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleCreate = async e => {
+    setLoading(true)
     const prompt = `Hi, create a ${genre} story about ${interests}. Answer ONLY with the content, without title or anything else. The story must have between 10 and 12 paragraphs `
     const options = {
         method: "POST",
@@ -58,11 +60,12 @@ function Book() {
     setTitle(title)
     setContent(story)
     setBook(true)
+    setLoading(false)
     await updateBooks(newBooks)
+    setInterests("")
   }
 
   useEffect(() => {
-    setInterests("nothing special")
     setGenre("fantasy")
   }, [])
     
@@ -75,7 +78,7 @@ function Book() {
         <h2 className="text-center w-4/5 md:w-full text-light text-3xl font-semibold md:text-4xl">new book</h2>
         <input type="text" placeholder="what are your interests?" className="w-4/5 py-2 bg-transparent border-b-2 border-blue-turquoise text-light outline-none text-xl md:w-1/2 lg:w-1/3" onChange={e => {
             setInterests(e.target.value)
-        }}/>
+        }} value={interests}/>
         <select className="w-4/5 py-2 bg-transparent border-b-2 border-blue-turquoise text-light outline-none text-xl md:w-1/2 lg:w-1/3" onChange={e => {
             setGenre(e.target.value)
         }}>
@@ -90,7 +93,7 @@ function Book() {
             <option value="historical_fiction" className="bg-blue-darker m-0 rounded-0 hover:bg-blue-darker ">Historical Fiction</option>
             <option value="poetry" className="bg-blue-darker m-0 rounded-0 hover:bg-blue-darker ">Poetry</option>
         </select>
-        <button className="w-4/5 py-2 bg-blue-turquoise transition-all hover:bg-blue-turquoiseHover text-blue-darker text-2xl rounded-xl font-semibold md:w-1/2 md:mt-4 lg:w-1/4" onClick={() => handleCreate()}>done</button>
+        <button className="w-4/5 py-2 bg-blue-turquoise transition-all hover:bg-blue-turquoiseHover text-blue-darker text-2xl rounded-xl font-semibold md:w-1/2 md:mt-4 lg:w-1/4 disabled:opacity-50" onClick={() => handleCreate()} disabled = {loading}>{(loading) ? "loading..." : "done"}</button>
     </div>
   )
 }
