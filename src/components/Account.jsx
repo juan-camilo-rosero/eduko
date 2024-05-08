@@ -9,7 +9,7 @@ const imgBBApiKey = import.meta.env.VITE_IMGBB_API_URL
 function Account() {
   const {account, setAccount} = useContext(SectionContext)
   const {logout} = useContext(AuthContext)
-  const {setUsername, setImg, updateProfile, username} = useContext(UserContext)
+  const {setUsername, setImg, updateProfile, username, img} = useContext(UserContext)
   const [newUsername, setNewUsername] = useState("")
   const [newImg, setNewImg] = useState("")
 
@@ -44,9 +44,9 @@ function Account() {
   }
 
   const handleUpdate = async () => {
-    setImg(newImg)
+    setImg(newImg || img)
     setUsername(newUsername)
-    await updateProfile(newUsername, newImg)
+    await updateProfile(newUsername, newImg || img)
     setAccount(false)
   }
     

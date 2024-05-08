@@ -18,7 +18,7 @@ function UserCard() {
       </button>
         <div className="w-full flex flex-col items-center">
             <img src={hat.url || "hat1.png"} alt="your hat :<" className="absolute w-14 -top-3/4 ml-16 rotate-45 lg:relative lg:top-14"/>
-            <img src={img} alt="profile photo" className={`object-cover rounded-full h-28 w-28 -mt-14 bg-light border-blue-dark border-8 lg:mt-8 lg:border-blue-turquoise lg:border-4 lg:mb-4`}/>
+            <img src={img || "profile_photo.webp"} alt="profile photo" className={`object-cover rounded-full h-28 w-28 -mt-14 bg-light border-blue-dark border-8 lg:mt-8 lg:border-blue-turquoise lg:border-4 lg:mb-4`}/>
             <p className="text-center text-sm text-light font-semibold mb-6 lg:text-xl">{username}</p>
         </div>
       <button className="flex flex-col items-center justify-center text-l text-light font-semibold w-20 text-center lg:bg-blue-turquoise lg:w-full lg:text-blue-dark lg:text-xl lg:py-[6px] lg:rounded-md lg:hover:bg-blue-turquoiseHover transition-all" onClick={() => setShop(!shop)}>
