@@ -1,0 +1,11 @@
+.neon-turquoise-box{
+    box-shadow: inset 0 0 5px turquoise, 0 0 10px turquoise !important;
+}
+
+.neon-white-box{
+    box-shadow: inset 0 0 5px white, 0 0 10px white;
+}
+
+.neon-red-box{
+    box-shadow: inset 0 0 5px red, 0 0 10px red;
+}
