@@ -13,7 +13,7 @@ function Book() {
 
   const handleCreate = async e => {
     setLoading(true)
-    const prompt = `Hi, create a ${genre} story about ${interests}. Answer ONLY with the content, without title or anything else. The story must have between 10 and 12 paragraphs `
+    const prompt = `Hi, create a ${genre} book for kids about ${interests}. Answer ONLY with the content, without title or anything else. The story must have between 10 and 12 paragraphs `
     const options = {
         method: "POST",
         headers: {
@@ -48,21 +48,64 @@ function Book() {
     ? books[books.length - 1].id
     : 0;
 
-    const newBooks = [{
-        id: lastId + 1,
-        title,
-        content: story,
-        read: false
-    }, ...books]
-
-    setBooks(newBooks)
     setCreateBook(false)
     setTitle(title)
     setContent(story)
     setBook(true)
     setLoading(false)
+
+    options.body = JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+            {"role": "user", "content": `Answer ONLY with a prompt to create an image about the next story. Remember that the other AI doesn't know the names of the characters or that sort of things, so be general. Less is more: ${story}`}
+        ]
+    })
+
+    const bookImgRes = await fetch("https://api.openai.com/v1/chat/completions", options)
+    const bookImgData = await bookImgRes.json()
+    const bookImg = bookImgData.choices[0].message.content
+    const imgUrl = await createImg(bookImg)
+
+    const newBooks = [{
+        id: lastId + 1,
+        title,
+        content: story,
+        read: false,
+        img: imgUrl
+    }, ...books]
+
+    setBooks(newBooks)
     await updateBooks(newBooks)
     setInterests("")
+  }
+
+  const createImg = async prompt => {
+      try {
+        const url = 'https://api.openai.com/v1/images/generations'
+        const parameters = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${chatGPTApiKey}`,
+            },
+            body: JSON.stringify({
+              prompt,
+              n: 1,
+              size: '512x512'
+            })
+        }
+        const res = await fetch(url, parameters)
+        if (!res.ok) {
+            throw new Error('Error creating the image :(');
+        }
+
+        const data = await res.json()
+        const imgUrl = data.data[0].url
+
+        return imgUrl
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   useEffect(() => {

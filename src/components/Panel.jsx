@@ -8,7 +8,7 @@ import Question from './Question'
 
 function Panel() {
   return (
-    <section className='w-screen min-h-screen pt-16 bg-blue-darker px-6 lg:px-24'>
+    <section className='w-screen min-h-screen pt-16 bg-black px-6 lg:px-24'>
       <Account/>
       <Question/>
       <Book/>

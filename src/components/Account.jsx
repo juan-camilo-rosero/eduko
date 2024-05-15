@@ -3,6 +3,7 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { SectionContext } from "../context/SectionContext";
 import { AuthContext } from "../context/AuthContext";
 import { UserContext } from "../context/UserContext";
+import '../App.css'
 
 const imgBBApiKey = import.meta.env.VITE_IMGBB_API_URL
 
@@ -51,7 +52,7 @@ function Account() {
   }
     
   return (
-    <div className={`fixed h-screen bg-blue-darker w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center justify-between pt-28 px-6 gap-8 pb-12 transition-all md:px-16 lg:px-24 ${(account)
+    <div className={`fixed h-screen bg-blue-darker w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center justify-between pt-28 px-6 gap-8 pb-12 transition-all md:px-16 lg:px-24  ${(account)
         ? "bottom-0"
         : "-bottom-[150vh]"
     }`}>
