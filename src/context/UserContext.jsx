@@ -23,6 +23,7 @@ export function UserContextProvider(props) {
         if (docSnap.exists()) {
             const books = docSnap.data() 
             setBooks(books.books)
+            console.log(books.books);
 
         } else {
             console.log("No such document!");
