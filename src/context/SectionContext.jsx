@@ -14,7 +14,6 @@ export function SectionContextProvider(props) {
     const [question, setQuestion] = useState(false)
 
     const closeAll = e => {
-        setHeroSection(false)
         setBook(false)
         setShop(false)
         setCreateBook(false)
