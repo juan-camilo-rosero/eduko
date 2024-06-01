@@ -22,6 +22,7 @@ export function SectionContextProvider(props) {
         setAccount(false)
         setSignUp(false)
         setQuestion(false)
+        setLogin(false)
     }
 
     return (
