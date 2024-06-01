@@ -22,11 +22,11 @@ function UserCard() {
             <img src={img || "profile_photo.webp"} alt="profile photo" className={`object-cover rounded-full h-28 w-28 -mt-10 bg-light border-blue-turquoise neon-turquoise-box border-4 mb-[12px] lg:mt-8 lg:border-blue-turquoise lg:border-4 lg:mb-4`}/>
             <p className="text-center text-sm text-light font-semibold mb-6 lg:text-xl">{username}</p>
         </div>
-      <button className="flex flex-col items-center justify-center text-l text-light font-semibold w-20 text-center lg:bg-blue-turquoise lg:border-blue-turquoise lg:border-3 lg:w-full lg:text-blue-dark lg:text-xl lg:py-[6px] lg:rounded-md lg:hover:bg-blue-turquoiseHover transition-all" onClick={() => setShop(!shop)}>
+      <button className="flex flex-col items-center justify-center text-l text-light font-semibold w-20 text-center lg:bg-blue-turquoise lg:border-blue-turquoise lg:border-3 lg:w-full lg:text-black lg:text-xl lg:py-[6px] lg:rounded-md lg:hover:bg-blue-turquoiseHover transition-all" onClick={() => setShop(!shop)}>
         <RiShoppingCart2Fill className="text-2xl lg:hidden"/>
         <p>shop</p>
       </button>
-      <button className="hidden lg:flex w-full py-[6px] rounded-md bg-blue-darker text-light items-center justify-center text-xl font-semibold mt-4 hover:bg-blue-darkerHover transition-all" onClick={() => setAccount(!account)}>account</button>
+      <button className="hidden lg:flex w-full py-[6px] rounded-md bg-white bg-opacity-5 text-light items-center justify-center text-xl font-semibold mt-4 hover:text-blue-turquoise transition-all" onClick={() => setAccount(!account)}>account</button>
         </div>
       </div>
       <Shop/>

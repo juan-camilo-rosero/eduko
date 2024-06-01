@@ -37,23 +37,6 @@ function LoginContainer() {
       setImg("error.gif")
     }
   }
-
-  /*return (
-    <figure className="bg-blue-dark rounded-xl p-6 pb-12 flex flex-col items-center mt-32 w-full md:mt-40 md:w-1/2 lg:w-5/6 lg:mt-28 lg:pb-8">
-        <img src="robot.png" alt="robot" className="h-40 -mt-32"/>
-        <h3 className="text-3xl font-semibold text-light">Login</h3>
-        <form className="flex flex-col w-4/5 mt-12 gap-6 lg:mt-4 lg:gap-4" onSubmit={e => {
-            e.preventDefault()
-            if(validateLogin(email, password)) handleLogin(email, password)
-            else alert("Correo o contraseña inválidos")
-          }
-        }>
-          <input type="text" placeholder="email" className="bg-transparent border-b-2 border-light py-3 text-2xl outline-none text-light lg:text-xl lg:py-2 focus:border-b-blue-turquoise focus:text-blue-turquoise" onChange={e => setEmail(e.target.value)} value={email}/>
-          <input type="password" placeholder="password" className="bg-transparent border-b-2 border-light py-3 text-2xl outline-none text-light lg:text-xl lg:py-2 focus:border-b-blue-turquoise focus:text-blue-turquoise" onChange={e => setPassword(e.target.value)} value={password}/>
-          <button type="submit" className="py-2 px-8 bg-blue-turquoise rounded-xl font-semibold text-blue-dark hover:bg-blue-turquoiseHover transition-all mt-6 text-2xl lg:mt-8">continue</button>
-        </form>
-    </figure>
-  )*/
   return (
     <div className={`fixed h-screen bg-black w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center pt-32 px-6 gap-8 overflow-y-scroll pb-12 transition-all md:px-16 lg:px-24 lg:pt-28 ${(loginDiv)
         ? "bottom-0"
