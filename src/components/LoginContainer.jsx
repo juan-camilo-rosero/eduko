@@ -9,7 +9,7 @@ function LoginContainer() {
   const { setHeroSection, setAlertDiv, loginDiv, setLogin } = useContext(SectionContext)
   const { login } = useContext(AuthContext)
   const { setMessage, setImg } = useContext(AlertContext)
-  const { userEmail, setUserEmail, loadUser } = useContext(UserContext)
+  const { setUserEmail, loadUser } = useContext(UserContext)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -26,6 +26,7 @@ function LoginContainer() {
     try {
       await login(email, password)
       setHeroSection(false)
+      setLogin(false)
       setUserEmail(email)
       loadUser(email)
     } catch (err) {
