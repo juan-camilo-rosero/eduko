@@ -20,7 +20,7 @@ function App() {
   const {setUserEmail, loadUser} = useContext(UserContext)
   const {setBooksId} = useContext(BooksContext)
 
-  window.onbeforeunload = function() { return "¿Quieres abandonar este Sitio?"; }
+  window.onbeforeunload = function() { return "Do you want to leave"; }
 
   useEffect(() => {
     auth.onAuthStateChanged(async user => {
@@ -30,12 +30,12 @@ function App() {
         setBooksId(booksId)
         setHeroSection(false)
         history.pushState(null, null, window.location.href);
-        window.onpopstate = function () {
-            history.pushState(null, null, window.location.href);
-            closeAll()
-        };
       }
     });
+    window.onpopstate = function () {
+        history.pushState(null, null, window.location.href);
+        closeAll()
+    };
   }, [])
 
 
