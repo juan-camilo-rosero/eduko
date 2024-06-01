@@ -8,6 +8,7 @@ import {UserContext} from './context/UserContext'
 import {BooksContext} from './context/BooksContext'
 import Panel from './components/Panel'
 import SignUpContainer from './components/SignUpContainer'
+import LoginContainer from './components/LoginContainer'
 import { AlertContextProvider } from './context/AlertContext'
 import { AuthContextProvider } from './context/AuthContext'
 import { ShopContextProvider } from './context/ShopContext'
@@ -51,6 +52,7 @@ function App() {
           :  <Panel/>
         }
         <SignUpContainer/>
+        <LoginContainer/>
 
       </ShopContextProvider>
       </AuthContextProvider>
