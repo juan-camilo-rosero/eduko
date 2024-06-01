@@ -20,7 +20,7 @@ function App() {
   const {setUserEmail, loadUser} = useContext(UserContext)
   const {setBooksId} = useContext(BooksContext)
 
-  window.onbeforeunload = function() { return "Do you want to leave"; }
+  window.onbeforeunload = closeAll
 
   useEffect(() => {
     auth.onAuthStateChanged(async user => {
