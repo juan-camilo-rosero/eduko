@@ -18,7 +18,7 @@ function HeroSection() {
 
 
 
-      <div className='w-full h-screen bg-black'></div>
+      <div className='w-full bg-black'></div>
       {/*
       <section className="pt-20 pb-10 min-h-screen bg-blue-darker flex flex-col px-6 items-center lg:grid lg:grid-cols-3">
           <div className='flex flex-col items-center lg:col-span-2'>
