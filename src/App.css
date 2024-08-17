@@ -9,3 +9,7 @@
 .neon-red-box{
     box-shadow: inset 0 0 5px red, 0 0 10px red;
 }
+
+.neon-purple-box{
+    box-shadow: inset 0 0 5px #932dcf, 0 0 10px #932dcf;
+}
