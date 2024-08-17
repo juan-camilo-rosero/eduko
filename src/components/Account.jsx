@@ -52,11 +52,11 @@ function Account() {
   }
     
   return (
-    <div className={`fixed h-screen bg-black w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center justify-between pt-28 px-6 gap-8 pb-12 transition-all md:px-16 lg:px-24  ${(account)
+    <div className={`fixed h-screen bg-black/60 backdrop-blur-2xl w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center justify-between pt-28 px-6 gap-8 pb-12 transition-all md:px-16 lg:px-24  ${(account)
         ? "bottom-0"
         : "-bottom-[150vh]"
     }`}>
-        <RiCloseCircleLine className="fixed right-6 -mt-0 text-blue-turquoise text-4xl bg-black rounded-full cursor-pointer md:right-14 lg:right-20 lg:text-5xl lg:-mt-0" onClick={() => setAccount(false)}/>
+        <RiCloseCircleLine className="fixed right-6 -mt-0 text-blue-turquoise text-4xl bg-black/90 backdrop-blur-2xl rounded-full cursor-pointer md:right-14 lg:right-20 lg:text-5xl lg:-mt-0" onClick={() => setAccount(false)}/>
         <h2 className="text-center w-4/5 md:w-full text-light text-3xl font-semibold md:text-4xl lg:mb-12">Your account</h2>
         <div className="w-full flex flex-col gap-8 items-center">
           <div className="flex justify-between items-end md:w-3/5 lg:w-1/4 lg:items-center lg:justify-center">

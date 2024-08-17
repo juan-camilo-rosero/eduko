@@ -58,7 +58,7 @@ function SignUpContainer() {
   }
     
   return (
-    <div className={`fixed h-screen bg-black w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center pt-32 px-6 gap-8 overflow-y-scroll pb-12 transition-all md:px-16 lg:px-24 lg:pt-28 ${(signUp)
+    <div className={`fixed h-screen bg-black/90 backdrop-blur-2xl w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center pt-32 px-6 gap-8 overflow-y-scroll pb-12 transition-all md:px-16 lg:px-24 lg:pt-28 ${(signUp)
         ? "bottom-0"
         : "-bottom-[150vh]"
     }`}>

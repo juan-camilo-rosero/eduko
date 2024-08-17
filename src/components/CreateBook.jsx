@@ -113,7 +113,7 @@ function Book() {
   }, [])
     
   return (
-    <div className={`fixed h-screen bg-black w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center pt-32 px-6 gap-16 overflow-y-scroll pb-12 transition-all md:px-16 lg:px-24 lg:pt-28 ${(createBook)
+    <div className={`fixed h-screen bg-black/60 backdrop-blur-2xl w-full left-0 border-t-4 border-blue-turquoise z-40 flex flex-col items-center pt-32 px-6 gap-16 overflow-y-scroll pb-12 transition-all md:px-16 lg:px-24 lg:pt-28 ${(createBook)
         ? "bottom-0"
         : "-bottom-[150vh]"
     }`}>
